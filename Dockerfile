@@ -1,4 +1,5 @@
-FROM node:18 as build
+# Use the official Node.js 18 image as a base
+FROM node:18-alpine3.18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,14 +16,8 @@ COPY . .
 # Build the app for production
 RUN npm run build
 
-# Use Nginx as a lightweight server to serve the static files
-FROM nginx:alpine
+# Expose port 3000 to the outside world
+EXPOSE 3000
 
-# Copy the built app from the previous stage to the Nginx web root directory
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Expose port 80 to the outside world
-EXPOSE 80
-
-# Start Nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]
+# Command to run the app
+CMD ["npm", "start"]
