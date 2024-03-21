@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tetris-deployment
+  name: app-deployment
 spec:
   replicas: 3
   selector:
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: ai-planet
-          image: docker.io/rkvishnu77/ai-planet:latest
+          image: rkvishnu77/ai-planet:latest
           ports:
             - containerPort: 3000
