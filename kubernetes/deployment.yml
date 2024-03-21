@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai-planet-deployment
-  namespace: ai-planet
+  name: react-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ai-planet
+      app: react-app
   template:
     metadata:
       labels:
-        app: ai-planet
+        app: react-app
     spec:
       containers:
-        - name: ai-planet
-          image: rkvishnu77/ai-planet:latest
+        - name: react-app
+          image: docker.io/rkvishnu77/ai-planet:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
