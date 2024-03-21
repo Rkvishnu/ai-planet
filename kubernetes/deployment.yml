@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai-planet
+  name: ai-planet-deployment
   namespace: ai-planet
 spec:
   replicas: 3
