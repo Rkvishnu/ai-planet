@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: app-rollout
+
+spec:
+  deploymentRef:
+    name: app-deployment
+  replicas: 3
+  rolloutStrategy:
+    type: Canary
+    canary:
+      steps:
+        - setWeight: 10
+          pause:
+            duration: 60s
+        - setWeight: 20
+          pause:
+            duration: 60s
+        - setWeight: 30
+          pause:
+            duration: 60s
+        - setWeight: 100
+    trafficRouting:
+      istio:
+        virtualService:
+          name: app-virtual-service

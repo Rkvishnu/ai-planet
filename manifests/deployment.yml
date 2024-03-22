@@ -2,18 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-deployment
+
 spec:
-  replicas: 3
+  replicas: 3  
+  
+  rolloutStrategy:
+    type: Canary
+    canaryService: app-service  
+
   selector:
     matchLabels:
       app: ai-planet
+
   template:
     metadata:
       labels:
         app: ai-planet
+
     spec:
       containers:
         - name: ai-planet
-          image: rkvishnu77/ai-planet:latest
+          image: rkvishnu77/ai-planet:latest 
           ports:
             - containerPort: 3000
