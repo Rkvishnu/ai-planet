@@ -21,6 +21,6 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t username/ai-planet:latest .
-        docker push username/ai-planet:latest
+        docker build -t rkvishnu77/ai-planet:latest .
+        docker push rkvishnu77/ai-planet:latest
 
